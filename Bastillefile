@@ -6,8 +6,6 @@ SYSRC transmission_download_dir="/usr/local/etc/transmission/home/Downloads"
 SYSRC plexmediaserver_enable="YES"
 SERVICE plexmediaserver start
 SERVICE transmission start
-CMD cat "${plex}"
-CMD cat "${trasmission}"
 CMD sed -i '' -e 's/Preferences/\Preferences allowedNetworks="192\.168\.109\.0\/255\.255\.255\.0" FriendlyName="plexmediaserver" AcceptedEULA="1"/' ""${plex}""
 CMD sed -i '' -e 's/\([[:space:]]*"rpc-whitelist-enabled":[[:space:]]*\)true,/\1false,/' ""${trasmission}""
 SERVICE plexmediaserver restart
