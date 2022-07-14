@@ -1,4 +1,4 @@
-ARG trasmission=/usr/local/etc/transmission/home/settings.json
+ARG transmission=/usr/local/etc/transmission/home/settings.json
 ARG plex=/usr/local/plexdata/Plex Media Server/Preferences.xml
 PKG plexmediaserver transmission-web transmission-daemon
 SYSRC transmission_enable="YES"
@@ -8,6 +8,6 @@ SERVICE plexmediaserver start
 SERVICE transmission start
 CMD sleep 5
 CMD sed -i '' -e 's/Preferences/\Preferences allowedNetworks="192\.168\.109\.0\/255\.255\.255\.0" FriendlyName="plexmediaserver" AcceptedEULA="1"/' "${plex}"
-CMD sed -i '' -e 's/\([[:space:]]*"rpc-whitelist-enabled":[[:space:]]*\)true,/\1false,/' "${trasmission}"
+CMD sed -i '' -e 's/\([[:space:]]*"rpc-whitelist-enabled":[[:space:]]*\)true,/\1false,/' "${transmission}"
 SERVICE plexmediaserver restart
-SERVICE transmission restart
+SERVICE transmission reload
