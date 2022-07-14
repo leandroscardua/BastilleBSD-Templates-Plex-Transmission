@@ -1,0 +1,6 @@
+PKG plexmediaserver transmission-web transmission-daemon
+SYSRC plexmediaserver_enable="YES"
+SYSRC transmission_enable="YES"
+SYSRC transmission_download_dir="/usr/local/etc/transmission/home/Downloads"
+SERVICE plexmediaserver start
+SERVICE transmission start
