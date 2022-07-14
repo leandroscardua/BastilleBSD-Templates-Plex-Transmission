@@ -4,7 +4,9 @@ PKG plexmediaserver transmission-web transmission-daemon
 SYSRC plexmediaserver_enable="YES"
 SYSRC transmission_enable="YES"
 SYSRC transmission_download_dir="/usr/local/etc/transmission/home/Downloads"
-CMD sed -i '' -e 's/\([[:space:]]*"rpc-whitelist-enabled":[[:space:]]*\)true,/\1false,/' "${trasmission}"
-CMD sed -i '' -e 's/Preferences/\Preferences allowedNetworks="192\.168\.109\.0\/255\.255\.255\.0" FriendlyName="plexmediaserver" AcceptedEULA="1"/' "${plex}"
 SERVICE plexmediaserver start
 SERVICE transmission start
+CMD sed -i '' -e 's/\([[:space:]]*"rpc-whitelist-enabled":[[:space:]]*\)true,/\1false,/' "${trasmission}"
+CMD sed -i '' -e 's/Preferences/\Preferences allowedNetworks="192\.168\.109\.0\/255\.255\.255\.0" FriendlyName="plexmediaserver" AcceptedEULA="1"/' "${plex}"
+SERVICE plexmediaserver restart
+SERVICE transmission restart
